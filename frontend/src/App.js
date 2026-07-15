@@ -148,9 +148,7 @@ const realApi = {
     return json;
   },
 
-  // ── AUTH ENDPOINTS ──────────────────────────────────────────────────────────
-  // POST /api/auth/register   Body: { name, email, phone, password, gender, profession, location, role }
-  // Response: "User registered successfully!" (plain string)
+  
   async register(data) {
     const res = await fetch(`${CONFIG.API_BASE}/api/auth/signup`, {
       method: "POST",
@@ -162,10 +160,7 @@ const realApi = {
     return { message: text };
   },
 
-  // POST /api/auth/login   Body: { email, password }
-  // Response: JWT token string (plain text, NOT JSON)
-  // NOTE: Spring Boot ka UserService sirf "Login Successful" ya error return karta hai
-  // Hum token generate karwane ke liye AuthController mein JwtUtil.generateToken() call karaana padega
+
   async login(data) {
     const res = await fetch(`${CONFIG.API_BASE}/api/auth/login`, {
       method: "POST",
@@ -174,13 +169,12 @@ const realApi = {
     });
     const text = await res.text();
     if (!res.ok) throw new Error(text || "Login failed");
-    // Spring Boot se JWT token aana chahiye
-    // Agar token milta hai:
+    
     const token = text.trim();
-    // User info fetch karo token se (agar /api/auth/me endpoint ho)
+    
     let user = { email: data.email, name: data.email.split("@")[0], role:"donor" };
     try {
-      // Optional: agar /api/auth/me endpoint banaya ho
+      
       const meRes = await fetch(`${CONFIG.API_BASE}/api/auth/me`, {
         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" }
       });
@@ -189,9 +183,7 @@ const realApi = {
     return { token, user };
   },
 
-  // ── DONOR ENDPOINTS ─────────────────────────────────────────────────────────
-  // GET /api/donors?bloodGroup=O+&city=Mumbai
-  // Response: List<Donor>
+ 
   async getDonors(bloodGroup, city) {
   if (bloodGroup && city) return this._get("/api/donors/search", { bloodGroup, city });
   if (bloodGroup)         return this._get("/api/donors/search/bloodgroup", { bloodGroup });
@@ -199,29 +191,24 @@ const realApi = {
   return this._get("/api/donors/search", { bloodGroup: "", city: "" });
 },
 
-  // POST /api/donors   Body: Donor object   (Protected — JWT required)
-  // Response: saved Donor
+  
   async addDonor(data) {
     return this._post("/api/donors", data);
   },
 
-  // ── BLOOD REQUEST ENDPOINT ──────────────────────────────────────────────────
-  // POST /api/requests   Body: BloodRequest object   (Protected — JWT required)
+  
   async addRequest(data) {
     return this._post("/api/requests", data);
   },
 
-  // ── PROFILE UPDATE ──────────────────────────────────────────────────────────
-  // PUT /api/auth/profile   Body: { name, phone, location, ... }   (Protected)
+ 
   async updateProfile(data) {
     return this._put("/api/auth/profile", data);
   },
 };
 
-// ─── API SWITCH ───────────────────────────────────────────────────────────────
 const api = CONFIG.USE_MOCK ? mockApi : realApi;
 
-// ─── CONTEXTS ─────────────────────────────────────────────────────────────────
 const AuthContext  = createContext(null);
 const ToastContext = createContext(null);
 
@@ -267,7 +254,7 @@ function ToastProvider({ children }) {
 const useAuth  = () => useContext(AuthContext);
 const useToast = () => useContext(ToastContext);
 
-// ─── TOAST ────────────────────────────────────────────────────────────────────
+
 function ToastItem({ msg, type, onClose }) {
   const cfg = {
     success: { bg:"#ECFDF5", border:"#A7F3D0", text:"#065F46", Icon:CheckCircle },
@@ -283,7 +270,7 @@ function ToastItem({ msg, type, onClose }) {
   );
 }
 
-// ─── UI ATOMS ─────────────────────────────────────────────────────────────────
+
 function Btn({ children, variant="primary", size="md", loading, icon:Icon, fullWidth, onClick, type="button", disabled }) {
   const v = {
     primary: { background:"var(--red)", color:"#fff", border:"none", boxShadow:"0 2px 8px rgba(191,24,39,0.25)" },
@@ -395,7 +382,7 @@ function BloodDrop({ size=110, animate=false }) {
   );
 }
 
-// ─── SIDEBAR ──────────────────────────────────────────────────────────────────
+
 const NAV = [
   { key:"dashboard", label:"Dashboard",      icon:Home },
   { key:"search",    label:"Search Donors",  icon:Search },
@@ -501,7 +488,7 @@ function DashShell({ children, page, onNav, onLogout, user }) {
   );
 }
 
-// ─── LANDING ──────────────────────────────────────────────────────────────────
+
 function Landing({ onNav }) {
   const stats = [{v:"50K+",l:"Active Donors"},{v:"1.2L+",l:"Lives Saved"},{v:"500+",l:"Cities Covered"},{v:"24/7",l:"Emergency Support"}];
   const steps = [
@@ -582,7 +569,7 @@ function Landing({ onNav }) {
   );
 }
 
-// ─── AUTH SHELL ───────────────────────────────────────────────────────────────
+
 function AuthShell({ children, title, sub, onBack }) {
   return (
     <div style={{ minHeight:"100vh", display:"flex" }}>
@@ -619,7 +606,7 @@ function AuthShell({ children, title, sub, onBack }) {
   );
 }
 
-// ─── LOGIN ────────────────────────────────────────────────────────────────────
+
 function Login({ onNav }) {
   const { login } = useAuth();
   const { addToast } = useToast();
@@ -640,7 +627,7 @@ function Login({ onNav }) {
     const e=validate(); if(Object.keys(e).length){setErrs(e);return;}
     setLoading(true);
     try {
-      // Spring Boot: POST /api/auth/login → JWT token
+      
       const r = await api.login(form);
       login(r.user, r.token);
       addToast("Welcome back!","success");
@@ -671,7 +658,7 @@ function Login({ onNav }) {
   );
 }
 
-// ─── SIGNUP ───────────────────────────────────────────────────────────────────
+
 function Signup({ onNav }) {
   const { addToast } = useToast();
   const [step, setStep] = useState(1);
@@ -702,7 +689,7 @@ function Signup({ onNav }) {
     const e=v2(); if(Object.keys(e).length){setErrs(e);return;}
     setLoading(true);
     try {
-      // Spring Boot: POST /api/auth/register   Body matches User.java fields
+     
       await api.register(form);
       addToast("Account created! Please sign in.","success");
       onNav("login");
@@ -745,7 +732,7 @@ function Signup({ onNav }) {
   );
 }
 
-// ─── DASHBOARD ────────────────────────────────────────────────────────────────
+
 function DashHome({ onNav }) {
   const { user } = useAuth();
   const [show, setShow] = useState(false);
@@ -840,7 +827,7 @@ function DashHome({ onNav }) {
   );
 }
 
-// ─── SEARCH DONOR ─────────────────────────────────────────────────────────────
+
 function SearchDonor() {
   const [filters, setFilters] = useState({ bloodGroup:"", city:"" });
   const [results, setResults] = useState([]);
@@ -851,8 +838,7 @@ function SearchDonor() {
   const doSearch = async(f=filters) => {
     setLoading(true); setSearched(true);
     try {
-      // Spring Boot: GET /api/donors?bloodGroup=O+&city=Mumbai
-      // DonorRepository.findByBloodGroupAndCity() se data aayega
+      
       const data = await api.getDonors(f.bloodGroup, f.city);
       setResults(Array.isArray(data)?data:data.data||[]);
     } catch(err) { addToast(err.message||"Search failed","error"); }
@@ -943,7 +929,7 @@ function SearchDonor() {
   );
 }
 
-// ─── ADD DONOR ────────────────────────────────────────────────────────────────
+
 function AddDonor() {
   const { addToast } = useToast();
   // Fields match your Donor.java model exactly
@@ -970,8 +956,7 @@ function AddDonor() {
     const e=validate(); if(Object.keys(e).length){setErrs(e);return;}
     setLoading(true);
     try {
-      // Spring Boot: POST /api/donors   Body: Donor.java fields
-      // age must be int, latitude/longitude must be double
+      
       const payload = {
         ...form,
         age: form.age ? parseInt(form.age) : null,
@@ -1038,7 +1023,7 @@ function AddDonor() {
   );
 }
 
-// ─── EMERGENCY ────────────────────────────────────────────────────────────────
+
 function Emergency() {
   const { addToast } = useToast();
   // Fields match BloodRequest.java (jo tumhare tree mein tha)
@@ -1160,7 +1145,7 @@ function Emergency() {
   );
 }
 
-// ─── PROFILE ──────────────────────────────────────────────────────────────────
+
 function Profile() {
   const { user, setUser } = useAuth();
   const { addToast } = useToast();
@@ -1237,7 +1222,7 @@ function Profile() {
   );
 }
 
-// ─── ROUTER ───────────────────────────────────────────────────────────────────
+
 const PROTECTED = ["dashboard","search","add-donor","emergency","profile"];
 function Router() {
   const { isAuthenticated, logout, user } = useAuth();
