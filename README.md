@@ -15,7 +15,7 @@ BloodBridge is a web application that helps people find and register blood donor
 
 The backend is powered by **Spring Boot**, with a connection status indicator shown directly in the app sidebar ("Spring Boot Connected").
 
-![Homepage](./Images/homepage.png)
+![Homepage](./Images/Homepage.png)
 
 ---
 
