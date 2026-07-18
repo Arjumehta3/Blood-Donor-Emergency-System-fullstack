@@ -112,10 +112,4 @@ npm start
 
 ---
 
-
-| Add Donor | `screenshots/addnewdonor.png` |
-| My Profile | `screenshots/myprofile.png` |
-
----
-
 *Built to make finding blood donors faster and easier — every drop counts.*
