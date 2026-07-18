@@ -15,6 +15,8 @@ BloodBridge is a web application that helps people find and register blood donor
 
 The backend is powered by **Spring Boot**, with a connection status indicator shown directly in the app sidebar ("Spring Boot Connected").
 
+![Homepage](./screenshots/homepage.png)
+
 ---
 
 ## ✨ Key Stats (Landing Page)
@@ -44,10 +46,14 @@ A clean authentication screen with:
 - Link to create a new account
 - Sidebar highlights: *50,000+ Active Donors*, *Any city, any blood group*, *Emergency alerts 24×7*
 
+![Sign In](./screenshots/login.png)
+
 ### 3. Sign Up (Create Account)
 A two-step registration flow:
 - **Step 1:** Full Name, Email, Phone, Password (minimum 6 characters, must include letters, numbers & symbols)
 - **Step 2:** (continues after Step 1 — likely blood group/location details)
+
+![Sign Up](./screenshots/signup.png)
 
 ### 4. Dashboard
 The authenticated home screen, greeting the user by name with the current date. It includes:
@@ -56,12 +62,16 @@ The authenticated home screen, greeting the user by name with the current date. 
 - **Quick Actions:** Search Donors, Add Donor, Emergency Request
 - **Blood Supply overview:** availability by blood group (O+, A+, B+, AB−, O−) shown as progress bars
 
+![Dashboard](./screenshots/dashboard.png)
+
 ### 5. Search Donors
 Allows users to find available donors by:
 - **Blood Group** (dropdown)
 - **City** (text input)
 
 Search results display donor cards with name, age, blood group, availability status, location, phone, email, last donation date, and a **Contact Donor** button.
+
+![Search Donors](./screenshots/searchdonor.png)
 
 ### 6. Add Donor
 A form to register a new donor to the network, split into two sections:
@@ -70,11 +80,15 @@ A form to register a new donor to the network, split into two sections:
 
 Includes **Reset** and **Add Donor** actions.
 
+![Add Donor](./screenshots/addnewdonor.png)
+
 ### 7. My Profile
 Displays the logged-in user's account details:
 - Avatar, name, email, account status (Active Account)
 - Donation count and blood type summary
 - Editable account information: Full Name, Email, Phone, City, Profession, Blood Group, Role
+
+![My Profile](./screenshots/myprofile.png)
 
 ### 8. Emergency
 A dedicated section (flagged with a notification indicator in the sidebar) for urgent blood requests — surfaced throughout the app via the Emergency Requests stat and Quick Actions.
