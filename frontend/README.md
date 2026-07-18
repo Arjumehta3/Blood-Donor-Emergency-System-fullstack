@@ -1,70 +1,201 @@
-# Getting Started with Create React App
+# 🩸 Blood Donor Emergency System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application that connects blood donors with people in urgent need of blood, enabling faster emergency response through real-time donor search, request management, and notifications.
 
-## Available Scripts
+## 📋 Table of Contents
 
-In the project directory, you can run:
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [System Architecture](#system-architecture)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-### `npm start`
+## 📖 About the Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The **Blood Donor Emergency System** is designed to bridge the gap between blood donors and recipients during emergencies. Users can register as donors, search for available donors by blood group and location, raise emergency blood requests, and get notified when a match is found — helping save lives faster.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Features
 
-### `npm test`
+- 🔐 User authentication & authorization (JWT-based)
+- 🧑‍⚕️ Donor registration with blood group, location & contact details
+- 🔍 Search donors by blood group, city/pincode & availability
+- 🚨 Emergency blood request posting
+- 📩 Notifications/alerts to nearby matching donors
+- 🗂️ Donor & request history dashboard
+- 🛡️ Admin panel to manage users and requests
+- 📱 Responsive UI for mobile and desktop
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+**Backend**
+- Java 17
+- Spring Boot
+- Spring Security (JWT)
+- Spring Data JPA (Hibernate)
+- MySQL / PostgreSQL
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Frontend**
+- React.js
+- React Router
+- Axios
+- Tailwind CSS / Bootstrap (update as per your project)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Other Tools**
+- Maven
+- Postman (API testing)
+- Git & GitHub
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🏗️ System Architecture
 
-### `npm run eject`
+```
+React (Frontend) ⇄ REST API ⇄ Spring Boot (Backend) ⇄ MySQL (Database)
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Make sure you have the following installed:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
+- [Maven](https://maven.apache.org/download.cgi)
+- [Node.js & npm](https://nodejs.org/)
+- [MySQL](https://dev.mysql.com/downloads/) (or PostgreSQL)
+- Git
 
-## Learn More
+### Backend Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Clone the repository
+git clone https://github.com/your-username/blood-donor-emergency-system.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Navigate to backend folder
+cd blood-donor-emergency-system/backend
 
-### Code Splitting
+# Configure database credentials in
+# src/main/resources/application.properties
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Build and run the Spring Boot application
+mvn clean install
+mvn spring-boot:run
+```
 
-### Analyzing the Bundle Size
+The backend server will start at `http://localhost:8080`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Frontend Setup
 
-### Making a Progressive Web App
+```bash
+# Navigate to frontend folder
+cd blood-donor-emergency-system/frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Install dependencies
+npm install
 
-### Advanced Configuration
+# Start the development server
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The frontend will start at `http://localhost:3000`
 
-### Deployment
+## 🔑 Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Create an `application.properties` (or `.yml`) file inside `backend/src/main/resources/`:
 
-### `npm run build` fails to minify
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/blood_donor_db
+spring.datasource.username=your_db_username
+spring.datasource.password=your_db_password
+spring.jpa.hibernate.ddl-auto=update
+jwt.secret=your_jwt_secret_key
+jwt.expiration=86400000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create a `.env` file inside the `frontend/` folder:
+
+```env
+REACT_APP_API_BASE_URL=http://localhost:8080/api
+```
+
+## 📡 API Endpoints
+
+| Method | Endpoint                  | Description                    |
+|--------|----------------------------|---------------------------------|
+| POST   | `/api/auth/register`       | Register a new user/donor      |
+| POST   | `/api/auth/login`          | Login and get JWT token        |
+| GET    | `/api/donors`              | Get list of all donors         |
+| GET    | `/api/donors/search`       | Search donors by blood group/location |
+| POST   | `/api/requests`            | Create an emergency blood request |
+| GET    | `/api/requests`            | Get all blood requests         |
+| PUT    | `/api/requests/{id}`       | Update request status          |
+| DELETE | `/api/requests/{id}`       | Delete a request                |
+
+> Update this table with your actual controller endpoints.
+
+## 📂 Project Structure
+
+```
+blood-donor-emergency-system/
+├── backend/
+│   ├── src/main/java/com/bloodbank/
+│   │   ├── controller/
+│   │   ├── service/
+│   │   ├── repository/
+│   │   ├── model/
+│   │   └── config/
+│   └── src/main/resources/
+│       └── application.properties
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.js
+│   └── public/
+└── README.md
+```
+
+## 📸 Screenshots
+
+> Add screenshots or GIFs of your app here once available.
+
+| Home Page | Donor Search | Emergency Request |
+|-----------|---------------|--------------------|
+| _add image_ | _add image_ | _add image_ |
+
+## 🗺️ Roadmap
+
+- [ ] SMS/Email notifications for emergency requests
+- [ ] Geolocation-based donor matching
+- [ ] Blood bank inventory integration
+- [ ] Mobile app version
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+## 📬 Contact
+
+Your Name — your.email@example.com
+
+Project Link: [https://github.com/your-username/blood-donor-emergency-system](https://github.com/your-username/blood-donor-emergency-system)

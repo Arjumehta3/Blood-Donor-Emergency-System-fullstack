@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -35,16 +36,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
 
-
         Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
-
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
 
-
             if (passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-
 
                 String token = jwtUtil.generateToken(existingUser.getEmail());
                 return ResponseEntity.ok(token);
