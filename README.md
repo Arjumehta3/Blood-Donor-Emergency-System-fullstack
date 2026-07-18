@@ -1,153 +1,120 @@
-#  Blood Donor Emergency System
+# BloodBridge — Donor Network
 
-A full-stack web application that connects blood donors with people in urgent need of blood, enabling faster emergency response through real-time donor search, request management, and notifications.
+**India's Open Blood Donor Network** — A free, community-driven platform connecting blood donors with patients across India, with no hospital restrictions and no fees.
 
+![Status](https://img.shields.io/badge/status-active-brightgreen) ![Frontend](https://img.shields.io/badge/frontend-React-blue) ![Backend](https://img.shields.io/badge/backend-Spring%20Boot-green)
 
+---
 
-##  About the Project
+## 🩸 Overview
 
-The **Blood Donor Emergency System** is designed to bridge the gap between blood donors and recipients during emergencies. Users can register as donors, search for available donors by blood group and location, raise emergency blood requests, and get notified when a match is found — helping save lives faster.
+BloodBridge is a web application that helps people find and register blood donors quickly during emergencies. The platform is built as a two-part system:
 
-##  Features
+- **Public landing site** (`localhost:3001`) — marketing/home page for visitors, donor sign-up, and sign-in.
+- **Authenticated dashboard app** (`localhost:3000`) — the donor network portal where logged-in users can search donors, register new donors, manage their profile, and respond to emergencies.
 
--  User authentication & authorization (JWT-based)
--  Donor registration with blood group, location & contact details
--  Search donors by blood group, city/pincode & availability
--  Emergency blood request posting
--  Responsive UI for mobile and desktop
+The backend is powered by **Spring Boot**, with a connection status indicator shown directly in the app sidebar ("Spring Boot Connected").
 
-##  Tech Stack
+---
 
-**Backend**
-- Java 17
-- Spring Boot
-- Spring Security (JWT)
-- Spring Data JPA (Hibernate)
-- MySQL 
+## ✨ Key Stats (Landing Page)
 
-**Frontend**
-- React.js
-- React Router
-- Axios
--  CSS 
+| Metric | Value |
+|---|---|
+| Active Donors | 50K+ |
+| Lives Saved | 1.2L+ |
+| Cities Covered | 500+ |
+| Emergency Support | 24/7 |
 
-**Other Tools**
-- Maven
-- Postman (API testing)
-- Git & GitHub
+---
 
-##  System Architecture
+## 📄 Pages & Features
 
-```
-React (Frontend) ⇄ REST API ⇄ Spring Boot (Backend) ⇄ MySQL (Database)
-```
+### 1. Homepage
+The public-facing landing page introduces the platform's mission ("Find a donor, save a life") with two primary calls to action:
+- **Become a Donor**
+- **Find Donors**
 
-##  Getting Started
+It also displays sign-in/register options in the top navigation and highlights platform-wide statistics in a footer band.
 
-### Prerequisites
+### 2. Sign In
+A clean authentication screen with:
+- Email and password fields
+- "Forgot password?" link
+- Link to create a new account
+- Sidebar highlights: *50,000+ Active Donors*, *Any city, any blood group*, *Emergency alerts 24×7*
 
-Make sure you have the following installed:
+### 3. Sign Up (Create Account)
+A two-step registration flow:
+- **Step 1:** Full Name, Email, Phone, Password (minimum 6 characters, must include letters, numbers & symbols)
+- **Step 2:** (continues after Step 1 — likely blood group/location details)
 
-- [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
-- [Maven](https://maven.apache.org/download.cgi)
-- [MySQL](https://dev.mysql.com/downloads/) (or PostgreSQL)
-- Git
+### 4. Dashboard
+The authenticated home screen, greeting the user by name with the current date. It includes:
+- **Summary cards:** Total Donors, Emergency Requests, Available Now, Lives Saved (with trend indicators like *+8% this month*)
+- **Recent Activity feed:** live updates such as new blood requests, successful donations, new donor registrations, and resolved emergencies
+- **Quick Actions:** Search Donors, Add Donor, Emergency Request
+- **Blood Supply overview:** availability by blood group (O+, A+, B+, AB−, O−) shown as progress bars
 
-### Backend Setup
+### 5. Search Donors
+Allows users to find available donors by:
+- **Blood Group** (dropdown)
+- **City** (text input)
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/blood-donor-emergency-system.git
+Search results display donor cards with name, age, blood group, availability status, location, phone, email, last donation date, and a **Contact Donor** button.
 
-# Navigate to backend folder
-cd blood-donor-emergency-system/backend
+### 6. Add Donor
+A form to register a new donor to the network, split into two sections:
+- **Personal Information:** Full Name, Age (18–65 years), Blood Group, and an "Available to Donate" toggle
+- **Contact & Location:** Phone Number, Email, City, Full Address, Last Donation Date
 
-# Configure database credentials in
-# src/main/resources/application.properties
+Includes **Reset** and **Add Donor** actions.
 
-# Build and run the Spring Boot application
-mvn clean install
-mvn spring-boot:run
-```
+### 7. My Profile
+Displays the logged-in user's account details:
+- Avatar, name, email, account status (Active Account)
+- Donation count and blood type summary
+- Editable account information: Full Name, Email, Phone, City, Profession, Blood Group, Role
 
-The backend server will start at `http://localhost:8080`
+### 8. Emergency
+A dedicated section (flagged with a notification indicator in the sidebar) for urgent blood requests — surfaced throughout the app via the Emergency Requests stat and Quick Actions.
 
-### Frontend Setup
+---
 
-```bash
-# Navigate to frontend folder
-cd blood-donor-emergency-system/frontend
+## 🧭 Navigation (Sidebar)
 
-# Install dependencies
-npm install
+- Dashboard
+- Search Donors
+- Add Donor
+- Emergency 🔴
+- Profile
+- Connection status: **Spring Boot Connected**
+- Logout
 
-# Start the development server
-npm start
-```
+---
 
-The frontend will start at `http://localhost:3000`
+## 🛠️ Tech Stack
 
-```
+- **Frontend:** React
+- **Backend:** Spring Boot (REST API, connected live to the frontend)
+- **Ports (local dev):**
+  - `localhost:3000` — Authenticated app (dashboard, donors, profile)
+  - `localhost:3001` — Public landing/marketing site
 
-##  API Endpoints
+---
 
-| Method | Endpoint                  | Description                    |
-|--------|----------------------------|---------------------------------|
-| POST   | `/api/auth/register`       | Register a new user/donor      |
-| POST   | `/api/auth/login`          | Login and get JWT token        |
-| GET    | `/api/donors`              | Get list of all donors         |
-| GET    | `/api/donors/search`       | Search donors by blood group/location |
+## 📸 Screens Included
 
+| Screen | File |
+|---|---|
+| Homepage | `Homepage.png` |
+| Sign In | `login.png` |
+| Sign Up | `signup.png` |
+| Dashboard | `dashboard.png` |
+| Search Donors | `searchdonor.png` |
+| Add Donor | `addnewdonor.png` |
+| My Profile | `myprofile.png` |
 
+---
 
-
-##  Project Structure
-
-```
-blood-donor-emergency-system/
-├── backend/
-│   ├── src/main/java/com/bloodbank/
-│   │   ├── controller/
-│   │   ├── service/
-│   │   ├── repository/
-│   │   ├── model/
-│   │   └── config/
-│   └── src/main/resources/
-│       └── application.properties
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.js
-│   └── public/
-
-```
-
-## 📸 Screenshots
-
-### Home Page
-![Home Page](assets/Homepage.png)
-
-### Sign Up / Login
-| Create Account | Sign In |
-|-----------------|---------|
-| ![Signup](assets/Register.png) | ![Login](assets/Login.png) |
-
-### Dashboard
-![Dashboard](assets/Homepage.png)
-
-### Search Donors & Add Donor
-| Search Donors | Add Donor |
-|----------------|-----------|
-| ![Search Donors](assets/Search.png) | ![Add Donor](assets/donor.png) |
-
-
-
-##  Roadmap
-
-- [ ] SMS/Email notifications for emergency requests
-- [ ] Geolocation-based donor matching
-- [ ] Blood bank inventory integration
-- [ ] Mobile app version
-
+*This README was generated from application screenshots to document the current UI/UX and feature set of BloodBridge.*
