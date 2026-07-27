@@ -24,7 +24,6 @@ public class SecurityConfig {
     @Autowired
     private JwtFilter jwtFilter;
 
-    // ✅ Yeh bean pehle missing tha — isi wajah se error aa rahi thi
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -39,7 +38,10 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/signup", "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/donors", "/api/donors/search", "/api/donors/search/bloodgroup", "/api/donors/search/city").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/donors/search", "/api/donors/search/bloodgroup", "/api/donors/search/city").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/donors").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/donors/add").hasRole("DONOR")
+                        .requestMatchers(HttpMethod.PUT, "/api/donors/update-availability").hasAnyRole("DONOR", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -52,9 +54,9 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://localhost:3000",
-                "http://localhost:5173",  // Vite
-                "http://localhost:4173",  // Vite preview
-                "http://localhost:8081"   // ya jo bhi port ho
+                "http://localhost:5173",
+                "http://localhost:4173",
+                "http://localhost:8081"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
