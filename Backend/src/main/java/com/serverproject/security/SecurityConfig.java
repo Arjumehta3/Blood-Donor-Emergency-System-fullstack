@@ -42,6 +42,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/donors").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/donors/add").hasRole("DONOR")
                         .requestMatchers(HttpMethod.PUT, "/api/donors/update-availability").hasAnyRole("DONOR", "ADMIN")
+
+                        // Naye BloodRequest rules:
+                        .requestMatchers(HttpMethod.GET, "/api/request/active").hasAnyRole("DONOR", "BLOOD_BANK", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/request").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/request/*/accept").hasAnyRole("DONOR", "BLOOD_BANK")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

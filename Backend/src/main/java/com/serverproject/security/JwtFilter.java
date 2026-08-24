@@ -68,9 +68,10 @@ public class JwtFilter extends OncePerRequestFilter {
                 }
 
             } catch (Exception e) {
-                log.error("JWT validation failed: {}", e.getMessage());
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                return;
+                // Token invalid/expired ho to bhi request ko aage badhne do —
+                // ye User ko "anonymous" treat karega, aur SecurityConfig khud decide karega
+                // ki us path pe permission hai ya nahi (permitAll ya authenticated)
+                log.warn("JWT validation failed (ignoring, treating as unauthenticated): {}", e.getMessage());
             }
         }
 

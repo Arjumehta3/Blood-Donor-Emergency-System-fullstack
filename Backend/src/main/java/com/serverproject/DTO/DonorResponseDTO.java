@@ -1,14 +1,8 @@
-package com.serverproject.model;
+package com.serverproject.DTO;
 
-import jakarta.persistence.*;
+public class DonorResponseDTO {
 
-@Entity
-public class Donor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String bloodGroup;
     private String city;
@@ -20,15 +14,30 @@ public class Donor {
     private double latitude;
     private double longitude;
     private boolean available;
-    private double weight;
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    public DonorResponseDTO() {}
 
-    public Donor() {}
+    public DonorResponseDTO(Long id, String name, String bloodGroup, String city, String phone,
+                            String email, String address, String lastDonationDate, int age,
+                            double latitude, double longitude, boolean available, Long userId) {
+        this.id = id;
+        this.name = name;
+        this.bloodGroup = bloodGroup;
+        this.city = city;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.lastDonationDate = lastDonationDate;
+        this.age = age;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.available = available;
+        this.userId = userId;
+    }
 
     public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -63,9 +72,6 @@ public class Donor {
     public boolean isAvailable() { return available; }
     public void setAvailable(boolean available) { this.available = available; }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
-    public double getWeight() { return weight; }
-    public void setWeight(double weight) { this.weight = weight; }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 }

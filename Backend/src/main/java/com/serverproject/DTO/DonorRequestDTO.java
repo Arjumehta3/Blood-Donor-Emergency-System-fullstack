@@ -1,34 +1,26 @@
-package com.serverproject.model;
+package com.serverproject.DTO;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
-@Entity
-public class Donor {
+public class DonorRequestDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Blood group is required")
     private String bloodGroup;
+
+    @NotBlank(message = "City is required")
     private String city;
+
+    @NotBlank(message = "Phone is required")
     private String phone;
+
     private String email;
     private String address;
     private String lastDonationDate;
     private int age;
-    private double latitude;
-    private double longitude;
-    private boolean available;
-    private double weight;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public Donor() {}
-
-    public Long getId() { return id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -53,19 +45,4 @@ public class Donor {
 
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
-
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
-
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
-
-    public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
-
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
-    public double getWeight() { return weight; }
-    public void setWeight(double weight) { this.weight = weight; }
 }

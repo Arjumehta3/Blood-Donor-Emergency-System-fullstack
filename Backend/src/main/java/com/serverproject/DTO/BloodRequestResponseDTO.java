@@ -1,29 +1,27 @@
 package com.serverproject.DTO;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import com.serverproject.enums.RequestStatus;
 
-public class BloodRequestDTO {
+import java.time.LocalDateTime;
 
-    @NotBlank(message = "Blood group is required")
+public class BloodRequestResponseDTO {
+
+    private Long id;
     private String bloodGroup;
-
-    @NotBlank(message = "Location is required")
     private String location;
-
-    @NotBlank(message = "Urgency is required")
     private String urgency;
-
-    @NotBlank(message = "Name is required")
     private String patientName;
-
-    @NotBlank(message = "Phone number is required")
     private String contactNumber;
-
-    @Min(value = 1, message = "Units needed must be at least 1")
     private int unitsNeeded;
+    private RequestStatus status;
+    private LocalDateTime createdAt;
+    private Long requestedById;
+    private Long acceptedById;
 
-    public BloodRequestDTO() {}
+    public BloodRequestResponseDTO() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getBloodGroup() { return bloodGroup; }
     public void setBloodGroup(String bloodGroup) { this.bloodGroup = bloodGroup; }
@@ -42,4 +40,16 @@ public class BloodRequestDTO {
 
     public int getUnitsNeeded() { return unitsNeeded; }
     public void setUnitsNeeded(int unitsNeeded) { this.unitsNeeded = unitsNeeded; }
+
+    public RequestStatus getStatus() { return status; }
+    public void setStatus(RequestStatus status) { this.status = status; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public Long getRequestedById() { return requestedById; }
+    public void setRequestedById(Long requestedById) { this.requestedById = requestedById; }
+
+    public Long getAcceptedById() { return acceptedById; }
+    public void setAcceptedById(Long acceptedById) { this.acceptedById = acceptedById; }
 }

@@ -5,20 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d135963-c0a2-4cd5-ae68-0b2abf8b9af2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/LoginResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/UserResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/UserSignupDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/security/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/BloodRequestResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/DonorRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/DonorResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/enums/RequestStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/enums/VerificationStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22-07-2026_19_44_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22-07-2026_19_44__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/BloodRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/BloodRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/DTO/DonorDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/BloodRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/BloodRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/DonorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/controller/DonorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/mapper/BloodRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/mapper/BloodRequestMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/mapper/DonorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/mapper/DonorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/model/BloodRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/model/BloodRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/model/Donor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/model/Donor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/repository/BloodRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/repository/BloodRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/security/JwtFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/service/BloodRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/service/BloodRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/serverproject/service/DonorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/serverproject/service/DonorService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="50" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,6 +52,72 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000000037560902" />
+      <entry key="S5" value="1.0014070818761152" />
+      <entry key="S10" value="1.0588517282885508" />
+      <entry key="S30" value="1.791248111945202" />
+      <entry key="S60" value="2.5373413295509786" />
+      <entry key="M2" value="3.2042452432935407" />
+      <entry key="M5" value="4.63581926794225" />
+      <entry key="M10" value="6.899471703461373" />
+      <entry key="M15" value="8.574571803809343" />
+      <entry key="M30" value="11.318651703993385" />
+      <entry key="H1" value="13.338250386134364" />
+      <entry key="H2" value="14.575939163920358" />
+      <entry key="H4" value="15.262815589231428" />
+      <entry key="D1" value="15.873471806883474" />
+      <entry key="W1" value="15.981832494230103" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="3.3156252363628494E-10" />
+      <entry key="MS500" value="0.012709049970814467" />
+      <entry key="S2" value="0.33575976739165175" />
+      <entry key="S5" value="0.6487289271062036" />
+      <entry key="S10" value="0.8578073803247576" />
+      <entry key="S30" value="1.5704584303715512" />
+      <entry key="S60" value="2.439790558445006" />
+      <entry key="M2" value="3.418913439552489" />
+      <entry key="M5" value="5.419535322477933" />
+      <entry key="M10" value="7.855724358939789" />
+      <entry key="M15" value="9.295936205602745" />
+      <entry key="M30" value="11.271557861680582" />
+      <entry key="H1" value="12.524948633223962" />
+      <entry key="H2" value="13.232345055214985" />
+      <entry key="H4" value="13.608314021722963" />
+      <entry key="D1" value="13.933598690830193" />
+      <entry key="W1" value="13.99048627808025" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="3.3156252363703266E-10" />
+      <entry key="MS500" value="0.012768580943808098" />
+      <entry key="S2" value="0.42359819842263846" />
+      <entry key="S5" value="1.0260544586025773" />
+      <entry key="S10" value="1.4967198992050563" />
+      <entry key="S30" value="3.06021356433892" />
+      <entry key="S60" value="4.743656757896809" />
+      <entry key="M2" value="6.4677114366040644" />
+      <entry key="M5" value="9.964908109643748" />
+      <entry key="M10" value="14.691423825439083" />
+      <entry key="M15" value="17.820027541756204" />
+      <entry key="M30" value="22.55910240059481" />
+      <entry key="H1" value="25.845663376271148" />
+      <entry key="H2" value="27.798936381847724" />
+      <entry key="H4" value="28.866298524523028" />
+      <entry key="D1" value="29.80624237041696" />
+      <entry key="W1" value="29.972199891280667" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,
   &quot;fromUser&quot;: false
@@ -44,26 +127,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ServerProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aarju/Downloads/Blood-Donor Emergency System-fullstack/Backend&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.blood donor.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.ServerProjectApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/aarju/Downloads/PROJECTS/Blood-Donor Emergency System-fullstack/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="blood donor" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.serverproject.ServerProjectApplication" />
+      <module name="BloodDonor" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.258" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.258" />
+        <option value="bundled-jdk-30f59d01ecdd-34e2839f716b-intellij.indexing.shared.core-IU-262.9437.185" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.9437.185" />
       </set>
     </attachedChunks>
   </component>
@@ -79,5 +183,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
